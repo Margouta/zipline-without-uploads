@@ -31,7 +31,7 @@ export default function DashboardSettings() {
 
         <SettingsSessions />
 
-        {isAdministrator(user?.role) && {config.features.oauthRegistration && <SettingsOAuth />} />}
+        {isAdministrator(user?.role) && <SettingsOAuth />}
 
         <SettingsDashboard />
 
