@@ -39,9 +39,9 @@ export default function DashboardSettings() {
 
         {eitherTrue(config.mfa.totp.enabled, config.mfa.passkeys) && <SettingsMfa />}
 
-        {isAdministrator(user?.role) && <SettingsGenerators />
+        {isAdministrator(user?.role) && <SettingsGenerators />}
 
-        {isAdministrator(user?.role) && <SettingsExports />
+        {isAdministrator(user?.role) && <SettingsExports />}
 
         {isAdministrator(user?.role) && <SettingsServerActions />}
       </SimpleGrid>
