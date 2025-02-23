@@ -25,7 +25,7 @@ export default function DashboardSettings() {
       </Group>
 
       <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>
-        {isAdministrator(user?.role) && <SettingsUser /> />}
+        {isAdministrator(user?.role) && <SettingsUser />}
 
         <SettingsAvatar />
 
@@ -35,7 +35,7 @@ export default function DashboardSettings() {
 
         <SettingsDashboard />
 
-        {isAdministrator(user?.role) && <SettingsFileView /> />}
+        {isAdministrator(user?.role) && <SettingsFileView />}
 
         {eitherTrue(config.mfa.totp.enabled, config.mfa.passkeys) && <SettingsMfa />}
 
