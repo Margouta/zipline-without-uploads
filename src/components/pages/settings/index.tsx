@@ -25,23 +25,23 @@ export default function DashboardSettings() {
       </Group>
 
       <SimpleGrid mt='md' cols={{ base: 1, md: 2 }} spacing='lg'>
-        <SettingsUser />
+        {isAdministrator(user?.role) && <SettingsUser /> />}
 
         <SettingsAvatar />
 
         <SettingsSessions />
 
-        {config.features.oauthRegistration && <SettingsOAuth />}
+        {isAdministrator(user?.role) && {config.features.oauthRegistration && <SettingsOAuth />} />}
 
         <SettingsDashboard />
 
-        <SettingsFileView />
+        {isAdministrator(user?.role) && <SettingsFileView /> />}
 
         {eitherTrue(config.mfa.totp.enabled, config.mfa.passkeys) && <SettingsMfa />}
 
-        <SettingsGenerators />
+        {isAdministrator(user?.role) && <SettingsGenerators />
 
-        <SettingsExports />
+        {isAdministrator(user?.role) && <SettingsExports />
 
         {isAdministrator(user?.role) && <SettingsServerActions />}
       </SimpleGrid>
