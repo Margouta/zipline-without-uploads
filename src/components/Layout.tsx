@@ -78,18 +78,21 @@ const navLinks: NavLinks[] = [
     label: 'Files',
     icon: <IconFiles size='1rem' />,
     active: (path: string) => path === '/dashboard/files',
+    if: (user) => user?.role === 'SUPERADMIN',
     href: '/dashboard/files',
   },
   {
     label: 'Folders',
     icon: <IconFolder size='1rem' />,
     active: (path: string) => path === '/dashboard/folders',
+    if: (user) => user?.role === 'SUPERADMIN',
     href: '/dashboard/folders',
   },
   {
     label: 'Upload',
     icon: <IconUpload size='1rem' />,
     active: (path: string) => path.startsWith('/dashboard/upload'),
+    if: (user) => user?.role === 'SUPERADMIN',
     links: [
       {
         label: 'File',
