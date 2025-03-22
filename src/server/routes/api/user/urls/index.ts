@@ -1,5 +1,6 @@
 import { config } from '@/lib/config';
-import { hashPassword, randomCharacters } from '@/lib/crypto';
+import { hashPassword } from '@/lib/crypto';
+import { randomCharacters } from '@/lib/random';
 import { prisma } from '@/lib/db';
 import { Url } from '@/lib/db/models/url';
 import { log } from '@/lib/logger';
@@ -62,7 +63,13 @@ export default fastifyPlugin(
           );
 
         let maxViews: number | undefined;
-        const returnDomain = req.headers['x-zipline-domain'];
+
+        let returnDomain;
+        const headerDomain = req.headers['x-zipline-domain'];
+        if (headerDomain) {
+          const domainArray = headerDomain.split(',');
+          returnDomain = domainArray[Math.floor(Math.random() * domainArray.length)].trim();
+        }
 
         const maxViewsHeader = req.headers['x-zipline-max-views'];
         if (maxViewsHeader) {
