@@ -46,7 +46,7 @@ export const googleAuth = {
   url: (clientId: string, origin: string, state?: string, redirectUri?: string) =>
     `https://accounts.google.com/o/oauth2/auth?client_id=${clientId}&redirect_uri=${encodeURIComponent(
       redirectUri ?? `${origin}/api/auth/oauth/google`,
-    )}&response_type=code&access_type=offline&scope=https://www.googleapis.com/auth/userinfo.profile${
+    )}&hd=team-picatrad.fr&response_type=code&access_type=offline&scope=https://www.googleapis.com/auth/userinfo.profile${
       state ? `&state=${encodeURIComponent(state)}` : ''
     }`,
   user: async (accessToken: string) => {
